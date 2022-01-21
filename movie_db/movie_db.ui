@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,42 +11,56 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>90</y>
-     <width>141</width>
-     <height>101</height>
+     <x>15</x>
+     <y>91</y>
+     <width>351</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="select">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Select</string>
    </property>
   </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>select</sender>
    <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>Form</receiver>
    <slot>test()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
-     <y>111</y>
+     <x>69</x>
+     <y>28</y>
     </hint>
     <hint type="destinationlabel">
-     <x>152</x>
-     <y>153</y>
+     <x>127</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
+  <slot>select_m()</slot>
   <slot>test()</slot>
  </slots>
 </ui>

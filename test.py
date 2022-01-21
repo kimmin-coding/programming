@@ -1,3 +1,11 @@
-a={'a':10,'b':20,'c':30,'d':40}
-print("+".join(a))
+a=("메가박스",'CGV',
+'메가박스',
+'CGV',
+'CGV',
+'메가박스',
+'CGV',
+'메가박스',)
 
+b=[]
+for i,theater in enumerate(a):
+    print(i,theater)

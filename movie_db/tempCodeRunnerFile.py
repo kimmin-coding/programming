@@ -1,0 +1,1 @@
+a=self.tableWidget.item(0,0).text()
