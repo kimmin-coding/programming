@@ -1,1 +1,2 @@
-self.id_lineEdit.text()
+for i,ch in enumerate("hello"):
+    print(i,ch)

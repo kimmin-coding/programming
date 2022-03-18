@@ -1,8 +1,11 @@
 import sqlite3
 import sys
+import book
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import QDate
 from PyQt5 import uic
 import report
+import urllib.request
 
 db=__file__.replace("home.py","book_report.db")
 
@@ -26,7 +29,7 @@ class Form(QtWidgets.QDialog):
         
         self.tableWidget.setRowCount(len(records))
         
-        self.tableWidget.setColumnCount(5)
+        self.tableWidget.setColumnCount(6)
         for row , rowval in enumerate(records):
             for col,cell in enumerate(rowval):
                 
@@ -36,7 +39,13 @@ class Form(QtWidgets.QDialog):
 
         cur.close()
         conn.close()
-        self.tableWidget.setHorizontalHeaderLabels(["date", "ISBN","title","publisher","author"])
+        self.tableWidget.setHorizontalHeaderLabels(["date", "ISBN","title","publisher","author","memo"])
+        #print(QDate.currentDate())
+        self.date_wid.setDate(QDate.currentDate())
+        #print(str(self.date_wid.date().toPyDate()))
+      
+
+        
         
 
     def quit(self):
@@ -58,9 +67,9 @@ class Form(QtWidgets.QDialog):
                 conn=sqlite3.connect(db)
                 cur=conn.cursor()
                 
-                print(date,ISBN)
+                #print(date,ISBN)
                 strQuery="delete from keep_book WHERE date= '"+date.replace("'","''")+"' and ISBN= '"+ISBN.replace("'","''")+"'"
-                print(strQuery)
+                
                 cur.execute(strQuery)
                 conn.commit()
 
@@ -78,20 +87,42 @@ class Form(QtWidgets.QDialog):
     def add(self):
         conn=sqlite3.connect(db)
         cur=conn.cursor()
+        #print(book.chk_ISBN("9788997924271"))
+        currow=self.tableWidget.currentRow()
 
+
+        date=self.tableWidget.item(currow,0).text()
+        ISBN=self.tableWidget.item(currow,1).text()
 
         t=self.t_line.text().replace("'","''")
-        d=self.d_line.text().replace("'","''")
+        d=self.date_wid.text().replace("'","''")
         p=self.p_line.text().replace("'","''")
         a=self.a_line.text().replace("'","''")
         I=self.I_line.text().replace("'","''")
-    
-        strQuery="INSERT INTO keep_book "
-        strQuery+=" VALUES('"+d+"' , '"+I+"' "
-        strQuery+=",'"+t+"','"+p+"','"+I+"');"
+        
+        m=self.m_Text.toPlainText().replace("'","''")
+        print(m)
+        #print(d,I,date,ISBN)
+        strQuery="select count(ISBN) from keep_book"
+        strQuery+=' where ISBN="'+I+'" and date="'+d+'"'
+        cur.execute(strQuery)
+        records=cur.fetchall()
+
+        # print(strQuery)
+        # print(records[0][0])
+        if records[0][0]==0:
+
+            
+            strQuery="INSERT INTO keep_book "
+            strQuery+=" VALUES('"+d+"' , '"+I+"' "
+            strQuery+=",'"+t+"','"+p+"','"+I+"',"+m+");"
+        else:
+            strQuery="update keep_book set date ='"+d+"', ISBN = '"+I+"', title= '"+t+"', publisher='"+p+"', author='"+a+"', memo='"+m+"'"
+            strQuery+="where date='"+date+"' and ISBN='"+ISBN+"'"
 
 
-
+            
+        print(strQuery)
         
         cur.execute(strQuery)
         conn.commit()
@@ -103,18 +134,30 @@ class Form(QtWidgets.QDialog):
 
     def selected(self):
         currow=self.tableWidget.currentRow()
-        self.d_line.setText(self.tableWidget.item(currow,0).text())
+        #print(self.tableWidget.item(currow,0).text())
+        a,b,c=map(int,self.tableWidget.item(currow,0).text().split("-"))
+        #print(a,b,c)
+        self.date_wid.setDate(QDate(a,b,c))
         self.I_line.setText(self.tableWidget.item(currow,1).text())
         self.t_line.setText(self.tableWidget.item(currow,2).text())
         self.p_line.setText(self.tableWidget.item(currow,3).text())
         self.a_line.setText(self.tableWidget.item(currow,4).text())
+        self.m_Text.setText(self.tableWidget.item(currow,5).text())
 
     
         
+    def clear(self):
+        self.date_wid.setDate(QDate.currentDate())
+        self.I_line.clear()
+        self.t_line.clear()
+        self.p_line.clear()
+        self.a_line.clear()
+        self.m_Text.clear()
+
         
-
-
+    
 if __name__=="__main__" :
     app = QtWidgets.QApplication(sys.argv)
     w= Form()
     sys.exit(app.exec())
+

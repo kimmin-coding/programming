@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
+    <width>1022</width>
     <height>682</height>
    </rect>
   </property>
@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>250</y>
-     <width>741</width>
-     <height>381</height>
+     <y>320</y>
+     <width>971</width>
+     <height>311</height>
     </rect>
    </property>
    <property name="font">
@@ -35,13 +35,16 @@
     <number>1</number>
    </property>
    <property name="horizontalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
+    <enum>Qt::ScrollBarAsNeeded</enum>
    </property>
    <property name="sizeAdjustPolicy">
     <enum>QAbstractScrollArea::AdjustIgnored</enum>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="dragDropMode">
+    <enum>QAbstractItemView::NoDragDrop</enum>
    </property>
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectRows</enum>
@@ -56,7 +59,7 @@
   <widget class="QPushButton" name="Del_btn">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>880</x>
      <y>130</y>
      <width>75</width>
      <height>23</height>
@@ -91,8 +94,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>630</y>
+     <x>910</x>
+     <y>640</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -110,7 +113,7 @@
   <widget class="QPushButton" name="S_btn">
    <property name="geometry">
     <rect>
-     <x>670</x>
+     <x>880</x>
      <y>100</y>
      <width>75</width>
      <height>23</height>
@@ -178,28 +181,6 @@
     <string>저자:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="d_line">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>50</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>ex)0000-00-00</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string/>
-   </property>
-   <property name="clearButtonEnabled">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="I_line">
    <property name="geometry">
     <rect>
@@ -236,14 +217,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>80</y>
-     <width>56</width>
-     <height>12</height>
+     <width>41</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>ISBN:</string>
+    <string> ISBN:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="a_line">
@@ -259,27 +240,56 @@
   <widget class="QPushButton" name="C_btn">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>50</y>
-     <width>151</width>
+     <x>870</x>
+     <y>30</y>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Clear</string>
+    <string>New</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QDateEdit" name="date_wid">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>70</y>
-     <width>75</width>
-     <height>23</height>
+     <x>70</x>
+     <y>50</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>50</y>
+     <width>31</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>메모:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="m_Text">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>50</y>
+     <width>561</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>휴먼편지체</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>IBeamCursor</cursorShape>
    </property>
   </widget>
  </widget>
@@ -341,11 +351,27 @@
    <hints>
     <hint type="sourcelabel">
      <x>89</x>
-     <y>253</y>
+     <y>323</y>
     </hint>
     <hint type="destinationlabel">
      <x>92</x>
      <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>C_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>133</y>
     </hint>
    </hints>
   </connection>
@@ -357,5 +383,6 @@
   <slot>report()</slot>
   <slot>add()</slot>
   <slot>selected()</slot>
+  <slot>clear()</slot>
  </slots>
 </ui>
