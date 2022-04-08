@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>682</height>
+    <width>1171</width>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>320</y>
-     <width>971</width>
+     <x>30</x>
+     <y>380</y>
+     <width>1111</width>
      <height>311</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@
   <widget class="QPushButton" name="Del_btn">
    <property name="geometry">
     <rect>
-     <x>880</x>
+     <x>1020</x>
      <y>130</y>
      <width>75</width>
      <height>23</height>
@@ -78,8 +78,8 @@
   <widget class="QPushButton" name="Report_btn">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>640</y>
+     <x>30</x>
+     <y>700</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -94,8 +94,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>910</x>
-     <y>640</y>
+     <x>1090</x>
+     <y>700</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -113,7 +113,7 @@
   <widget class="QPushButton" name="S_btn">
    <property name="geometry">
     <rect>
-     <x>880</x>
+     <x>1020</x>
      <y>100</y>
      <width>75</width>
      <height>23</height>
@@ -133,7 +133,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>110</y>
+     <y>210</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -159,7 +159,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>140</y>
+     <y>110</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -172,7 +172,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>170</y>
+     <y>140</y>
      <width>56</width>
      <height>12</height>
     </rect>
@@ -198,7 +198,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>110</y>
+     <y>210</y>
      <width>113</width>
      <height>20</height>
     </rect>
@@ -208,13 +208,13 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>140</y>
+     <y>110</y>
      <width>113</width>
      <height>20</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -231,7 +231,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>170</y>
+     <y>140</y>
      <width>113</width>
      <height>20</height>
     </rect>
@@ -240,7 +240,7 @@
   <widget class="QPushButton" name="C_btn">
    <property name="geometry">
     <rect>
-     <x>870</x>
+     <x>1010</x>
      <y>30</y>
      <width>91</width>
      <height>31</height>
@@ -263,14 +263,20 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>50</y>
-     <width>31</width>
-     <height>16</height>
+     <x>480</x>
+     <y>10</y>
+     <width>141</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>휴먼둥근헤드라인</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>메모:</string>
+    <string>메모</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="m_Text">
@@ -290,6 +296,35 @@
    </property>
    <property name="cursor" stdset="0">
     <cursorShape>IBeamCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>170</y>
+     <width>321</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../../Downloads/다운로드.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Auto_Btn">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>240</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>자동완성</string>
    </property>
   </widget>
  </widget>
@@ -375,6 +410,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Auto_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>search()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>quit()</slot>
@@ -384,5 +435,6 @@
   <slot>add()</slot>
   <slot>selected()</slot>
   <slot>clear()</slot>
+  <slot>search()</slot>
  </slots>
 </ui>

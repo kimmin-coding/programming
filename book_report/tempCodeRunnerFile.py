@@ -1,2 +1,1 @@
-print(strQuery)
-        # print(records[0][0])
+image

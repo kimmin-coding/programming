@@ -1,11 +1,18 @@
 # import encodings
 # import requests
+from urllib import parse
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
-html=urlopen("http://www.pythonscraping.com/pages/page3.html")
+
+
+
+
+C_name=input("나라 이름")
+html=urlopen("https://search.naver.com/search.naver?query="+parse.quote(C_name))
 bs0bj = BeautifulSoup(html,"html.parser")
-print(bs0bj.find("img",{"src":"../img/gifts/img1.jpg"}))
+
+print(str(bs0bj.find("span",{"class":"over_text overtext_maxwidth"})).split("<a href=")[0].split(">")[1])
 # for child in bs0bj.find("img",{"src":"..img/gifts/img1.jpg"}).parent.previous_sibling.get_text():
 #     print(child)
 

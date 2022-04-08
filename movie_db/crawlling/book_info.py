@@ -1,11 +1,41 @@
 # import encodings
 # import requests
+from urllib import parse
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
-html=urlopen("http://www.pythonscraping.com/pages/page3.html")
-bs0bj = BeautifulSoup(html,"html.parser")
-print(bs0bj.find("img",{"src":"../img/gifts/img1.jpg"}))
+
+def get_book_info(title):
+
+
+    # B_name=input("책 제목")
+    html=urlopen("https://search.naver.com/search.naver?query="+parse.quote(title))
+    bs0bj = BeautifulSoup(html,"html.parser")
+
+    temp={}
+
+    t=bs0bj.findAll("div",{"class":"info_group"})
+
+    
+
+    for tag in t:
+        temp[tag.find("dt").text]=tag.find("dd").text
+
+    try:
+        
+        print(temp["저자"])
+        return (True,temp["저자"],temp["출판"])
+
+    except KeyError:
+        return (False)
+    
+    
+    # for i,tag in enumerate(a):
+    #     temp[tag.text]=b[i].text
+    
+        
+
+
 # for child in bs0bj.find("img",{"src":"..img/gifts/img1.jpg"}).parent.previous_sibling.get_text():
 #     print(child)
 

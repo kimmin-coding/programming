@@ -7,7 +7,15 @@ from PyQt5 import uic
 import report
 import urllib.request
 
+from PyQt5.QtGui import QPixmap
+import os
+
+print(sys.path)
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from movie_db.crawlling import book_info
+
 db=__file__.replace("home.py","book_report.db")
+RS_Path=os.path.dirname(__file__)+"\\resource" 
 
 class Form(QtWidgets.QDialog):
     
@@ -34,6 +42,7 @@ class Form(QtWidgets.QDialog):
             for col,cell in enumerate(rowval):
                 
                 self.tableWidget.setItem(row, col, QtWidgets.QTableWidgetItem(cell))
+        
                 
 
 
@@ -44,7 +53,14 @@ class Form(QtWidgets.QDialog):
         self.date_wid.setDate(QDate.currentDate())
         #print(str(self.date_wid.date().toPyDate()))
       
-
+    def second(self):
+        conn=sqlite3.connect(db)
+        cur=conn.cursor()
+        strQuery="select * from image"
+        cur.execute(strQuery)
+        self.label.setPixmap(QPixmap(RS_Path+"\\image.png"))   #이미지 파일 불러오기
+        cur.close()
+        conn.close()
         
         
 
@@ -108,20 +124,20 @@ class Form(QtWidgets.QDialog):
         cur.execute(strQuery)
         records=cur.fetchall()
 
-        # print(strQuery)
-        # print(records[0][0])
+        
+        print(records[0][0])
         if records[0][0]==0:
 
             
             strQuery="INSERT INTO keep_book "
-            strQuery+=" VALUES('"+d+"' , '"+I+"' "
-            strQuery+=",'"+t+"','"+p+"','"+I+"',"+m+");"
+            strQuery+="VALUES('"+d+"' , '"+I+"'"
+            strQuery+=',"'+t+'","'+p+'","'+I+'","'+m+'");'
         else:
             strQuery="update keep_book set date ='"+d+"', ISBN = '"+I+"', title= '"+t+"', publisher='"+p+"', author='"+a+"', memo='"+m+"'"
             strQuery+="where date='"+date+"' and ISBN='"+ISBN+"'"
 
 
-            
+        # print(strQuery)
         print(strQuery)
         
         cur.execute(strQuery)
@@ -143,6 +159,9 @@ class Form(QtWidgets.QDialog):
         self.p_line.setText(self.tableWidget.item(currow,3).text())
         self.a_line.setText(self.tableWidget.item(currow,4).text())
         self.m_Text.setText(self.tableWidget.item(currow,5).text())
+
+    def search(self):
+        print(self.t_line.text())
 
     
         
