@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>744</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1021</width>
+      <height>731</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="world">
+     <attribute name="title">
+      <string>World</string>
+     </attribute>
+     <widget class="QTabWidget" name="World">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1021</width>
+        <height>701</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="first">
+       <attribute name="title">
+        <string>Cats Rising</string>
+       </attribute>
+       <widget class="QComboBox" name="comboBox_1">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>1st~10th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11th~20th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21th~30th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>31th~40th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>41th~47th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48th(boss)</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="second">
+       <attribute name="title">
+        <string>Darkness Emperor</string>
+       </attribute>
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>1st~10th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11th~20th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21th~30th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>31th~40th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>41th~47th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48th(boss)</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="third">
+       <attribute name="title">
+        <string>Bahamut-Cat</string>
+       </attribute>
+       <widget class="QComboBox" name="comboBox_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>1st~10th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11th~20th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21th~30th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>31th~40th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>41th~47th</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48th(boss)</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionworld">
+   <property name="text">
+    <string>Empire of cats</string>
+   </property>
+  </action>
+  <action name="actionfuture">
+   <property name="text">
+    <string>Into the future</string>
+   </property>
+  </action>
+  <action name="actionspace">
+   <property name="text">
+    <string>Cats of the Cosmos</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboBox_3</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_1</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>121</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>138</x>
+     <y>59</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>selected()</slot>
+ </slots>
+</ui>
